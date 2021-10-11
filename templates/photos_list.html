@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}Our d*ck picks{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+{% for image_name in images %}
+  <div style="padding:3px;background-color:#DDD;">
+    <a href="{{ url_for('static', filename='photos_uploaded/' + image_name) }}">
+      <img width="80" src="{{ url_for('static', filename='photos_uploaded/' + image_name) }}">
+      {{ image_name.replace('.jpg', '') }}
+    </a>
+  </div>
+  <br/>
+{% endfor %}
+
+{% endblock %}

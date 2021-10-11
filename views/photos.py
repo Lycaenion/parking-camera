@@ -1,3 +1,4 @@
+import os
 import functools
 
 from flask import (
@@ -19,4 +20,7 @@ photos_blueprint = Blueprint('photos', __name__, url_prefix='/photos')
 @photos_blueprint.route('/list', methods=['GET'])
 @login_required
 def read():
-    return render_template('base.html')
+    return render_template(
+        'photos_list.html',
+        images=os.listdir('static/photos_uploaded'),
+    )
