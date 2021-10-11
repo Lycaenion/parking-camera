@@ -18,6 +18,6 @@ def index():
 
 if __name__ == '__main__':
     app.config.from_mapping(
-        SECRET_KEY='blabla333',
+        SECRET_KEY='blabla3asflkjaskjfkdsajfj33',
     )
     app.run(host='0.0.0.0', port=8000)
