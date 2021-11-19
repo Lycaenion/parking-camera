@@ -24,3 +24,10 @@ def read():
         'photos_list.html',
         images=os.listdir('static/photos_uploaded'),
     )
+
+@photos_blueprint.route('/save', methods=['POST'])
+@login_required
+def save():
+    file = request.files['file']
+    file.save(os.path.join('static/photos_uploaded', file.filename))
+    return redirect('/list')
