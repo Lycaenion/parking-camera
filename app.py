@@ -19,5 +19,6 @@ def index():
 if __name__ == '__main__':
     app.config.from_mapping(
         SECRET_KEY='blabla3asflkjaskjfkdsajfj33',
+        UPLOAD_FOLDER='static/photos_uploaded/',
     )
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

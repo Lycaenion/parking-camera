@@ -7,14 +7,31 @@
 
 
 {% block content %}
-{% for image_name in images %}
-  <div style="padding:3px;background-color:#DDD;">
-    <a href="{{ url_for('static', filename='photos_uploaded/' + image_name) }}">
-      <img width="80" src="{{ url_for('static', filename='photos_uploaded/' + image_name) }}">
-      {{ image_name.replace('.jpg', '') }}
-    </a>
-  </div>
-  <br/>
-{% endfor %}
+{{ pagination.info }}
+{{ pagination.links }}
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Pic</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for image_name in images %}
+      <tr>
+        <td>{{ loop.index + pagination.skip }}</td>
+        <td>
+          {%- set pic_url = url_for('static', filename='photos_uploaded/' + image_name) -%}
+          <a href="{{ pic_url }}">
+            <img width="240" src="{{ pic_url }}">
+            {{ image_name.replace('.jpg', '') }}
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{{ pagination.links }}
+
 
 {% endblock %}
