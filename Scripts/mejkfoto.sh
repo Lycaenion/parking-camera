@@ -1,11 +1,36 @@
 #!/bin/bash
 
-pic_name=pic_$(date +"%Y%m%d_%H%M%S").jpg
+LOG_FILE='/home/pi/mejkfoto.log'
+
+{
+now=$(date +"%Y_%m_%d %H %M")
+IFS=' ' read -r -a splitted <<< "${now}"
+datum_part="${splitted[0]}"
+
+hour_part=${splitted[1]}
+hour_part_num=`echo ${splitted[1]} | sed 's/^0*//'`
+
+minute_part="${splitted[2]}"
+
+pic_name="${1:-pic_${datum_part}-${hour_part}_${minute_part}.jpg}"
 pic_dir="/home/pi/Pictures/ParkingCamera"
-pic_path="${pic_dir}/{${pic_name}"
+pic_path="${pic_dir}/${pic_name}"
 
-echo "Creating pic ${pic_name}"
-raspistill -o ${pic_path}
+if [ "${hour_part_num}" -gt 7 -a "${hour_part_num}" -lt 16 ]; then
+    echo "It is a day."
+    echo "Creating pic ${pic_name}"
 
-echo "Uploading pic"
-curl -v -F "file=@${pic_path}" -- 'http://ec2-3-123-28-220.eu-central-1.compute.amazonaws.com:5000/photos/doofin'
+    raspistill -ISO 1600 -w 1640 -h 1232 -awb auto -ex auto -o ${pic_path}
+
+    # raspistill -o ${pic_path}
+    # raspistill -ISO 1600 -w 1640 -h 1232 -br 80 -co 100 -awb auto -ex auto -o ${pic_path}
+    # raspistill -w 1640 -h 1232 -br 80 -co 100 -awb auto -ex auto -o ${pic_path}
+else
+    echo "It is a night."
+    echo "Creating pic ${pic_name}"
+    raspistill -w 1640 -h 1232 -br 80 -co 100 -awb auto -ex auto -o ${pic_path}
+fi
+
+echo "uploading pic"
+curl -v -F "file=@${pic_path}" -- 'http://ec2-3-71-76-8.eu-central-1.compute.amazonaws.com:5000/photos/dooofin'
+} 2>&1 1>${LOG_FILE}
