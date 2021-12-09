@@ -16,6 +16,11 @@ def index():
     return redirect(url_for('photos.read'))
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return redirect(url_for('static', filename='akta_kamera.png'))
+
+
 if __name__ == '__main__':
     app.config.from_mapping(
         SECRET_KEY='blabla3asflkjaskjfkdsajfj33',
