@@ -1,3 +1,5 @@
 Flask==2.0.2
 flask-paginate==2021.10.29
 uWSGI==2.0.20
+Flask-thumbnails==1.1.0
+Pillow==8.4.0

@@ -7,6 +7,6 @@ e/*
 **/__pycache__
 
 # uploaded photos do not belong to source control
-/static/uploaded_photos/*
-/static/photos_uploaded/*
-/static/backup/*
+static/photos_uploaded/*.jpg
+static/backup/*.jpg
+static/thumbs/*.jpg
