@@ -48,16 +48,17 @@ def static(filename=None):
 
 
 app.view_functions['static'] = static
+app.config.from_mapping(
+    # docs: https://github.com/silentsokolov/flask-thumbnails
+    THUMBNAIL_MEDIA_ROOT='static/photos_uploaded',
+    THUMBNAIL_MEDIA_THUMBNAIL_ROOT='static/thumbs',
+    THUMBNAIL_MEDIA_THUMBNAIL_URL='../static/thumbs',
+)
+app.config.from_mapping(
+    SECRET_KEY='blabla3asflkjaskjfkdsajfj33',
+)
+
 
 
 if __name__ == '__main__':
-    app.config.from_mapping(
-        SECRET_KEY='blabla3asflkjaskjfkdsajfj33',
-
-        # docs: https://github.com/silentsokolov/flask-thumbnails
-        THUMBNAIL_MEDIA_ROOT='static/photos_uploaded',
-        THUMBNAIL_MEDIA_THUMBNAIL_ROOT='static/thumbs',
-        THUMBNAIL_MEDIA_THUMBNAIL_URL='../static/thumbs',
-    )
-
     app.run(host='0.0.0.0', port=5000, debug=True)

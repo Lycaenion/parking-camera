@@ -1,0 +1,29 @@
+[Unit]
+Description=Akta åttio kilometer i timmen app
+
+# Requirements
+Requires=network.target
+
+# Dependency ordering
+After=network.target
+
+[Service]
+TimeoutStartSec=0
+# RestartSec=10
+Restart=always
+
+# path to app
+WorkingDirectory=/home/ubuntu/camera/parking-camera
+
+# the user that you want to run app by
+User=ubuntu
+
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+# Main process
+ExecStart=/home/ubuntu/e/bin/uwsgi --ini /home/ubuntu/camera/parking-camera/aktaotty_uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target
