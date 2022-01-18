@@ -37,7 +37,10 @@ def read():
     istart = (page - 1) * PER_PAGE
     iend = page * PER_PAGE
 
-    all_images = sorted(os.listdir('static/photos_uploaded'), reverse=True)
+    all_images = sorted(
+        [img for img in os.listdir('static/photos_uploaded') if img.endswith('.jpg')],
+        reverse=True,
+    )
 
     pagination = Pagination(
         page=page,
