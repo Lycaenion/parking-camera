@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import shutil
 
 from flask import Flask, redirect, url_for, send_from_directory
 from flask_thumbnails import Thumbnail
@@ -22,6 +23,20 @@ PUBLIC_STATIC = set([
     'akta_kamera.png',
     'style.css',
 ])
+
+
+@app.context_processor
+def root_free_current_mb():
+    total, used, free = shutil.disk_usage('/')
+
+    total_mbs = total >> 20
+    free_mbs = free >> 20
+    percent_used = int(round(used / total, 2) * 100)
+
+    return dict(
+        free_mbs=f'{free_mbs}&nbsp;MB',
+        percent_used=f'{percent_used}%',
+    )
 
 
 @app.route('/')

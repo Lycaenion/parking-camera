@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
   <h1>80 kilometer i timmen</h1>
+  <p>{{ free_mbs | safe }} ({{ percent_used }})</p>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
