@@ -18,7 +18,7 @@ WorkingDirectory=/home/ubuntu/camera/parking-camera
 # the user that you want to run app by
 User=ubuntu
 
-KillSignal=SIGQUIT
+KillSignal=SIGKILL
 Type=notify
 NotifyAccess=all
 

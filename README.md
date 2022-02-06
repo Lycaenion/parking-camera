@@ -11,3 +11,13 @@
     ```bash
     rm -rf /home/ubuntu/camera/parking-camera/static/photos_uploaded/pic_2022_*_{0,1,2,3,4,5}{1,2,3,4,5,6,7,8,9}.jpg /home/ubuntu/camera/parking-camera/static/thumbs/*
     ```
+
+-   Permanently output system logs (and show last 100 lines):
+    ```bash
+    sudo tail -f -n 100 /var/log/syslog
+    ```
+
+-   Restart uwsgi systemd service:
+    ```bash
+    sudo systemctl restart aktaotty.service
+    ```
