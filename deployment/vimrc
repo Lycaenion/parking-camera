@@ -1,0 +1,20 @@
+filetype off
+syntax on
+filetype plugin indent on
+
+set mouse=a
+
+set hlsearch
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set listchars=tab:>-,trail:-
+set list
+
+" set number
+set ruler
+
+set clipboard=unamed,unnamedplus
+
+highlight Comment ctermfg=LightGrey term=none
