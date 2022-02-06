@@ -1,0 +1,6 @@
+## TODOS
+-   delete photos so that last 10 minutes stays undeleted, last hour every 10th minute stays undeleted and last day every hour stays undeleted, last week ...
+-   upload photos to local storage, e.g. PC
+-   switching camara day mode vs. night mode based on some daylight time different every day...
+-   add all files and scripts and system configurations and installations into source code from each device (AWS instance, raspberry, ...)
+-   add possibility to manually run clean on from the web page
