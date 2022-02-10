@@ -16,7 +16,11 @@ pic_name="${1:-pic_${datum_part}-${hour_part}_${minute_part}.jpg}"
 pic_dir="/home/pi/Pictures/ParkingCamera"
 pic_path="${pic_dir}/${pic_name}"
 
-if [ "${hour_part_num}" -gt 7 -a "${hour_part_num}" -lt 16 ]; then
+if [ "${hour_part_num}" -gt 6 -a "${hour_part_num}" -lt 17 ]; then
+    # TODO: use api like:
+    # - https://sunrise-sunset.org/api
+    # or do it in python using astral:
+    # - https://pypi.org/project/astral/1.2/
     echo "It is a day."
     echo "Creating pic ${pic_name}"
 
