@@ -1,0 +1,33 @@
+---
+- hosts: aktaotty.com
+  vars:
+    greeting_var: "Hello"
+    package_names:
+      - jq
+      - vim
+  tasks:
+   - name: Ensure packages are installed
+     package:
+       name: '{{ item }}'
+       state: 'present'
+     become: True
+     loop: '{{ package_names }}'
+     register: package_check
+
+   - name: "Print execution results"
+     debug:
+       var: package_check
+
+   - name: "Copy file to server with permissions"
+     ansible.builtin.copy:
+       src: ./poem.txt
+       dest: /home/ubuntu/poem.txt
+
+   - name: "Set time fact"
+     set_fact:
+         time_fact: "{{ ansible_date_time.time }}"
+
+   - name: "template file onto remote host"
+     template: 
+       src: ./templates/hello_world.j2
+       dest: /home/ubuntu/hello_world

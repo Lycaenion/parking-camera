@@ -1,0 +1,10 @@
+webservers:
+  hosts:
+    aktaotty.com:
+      ansible_user: ubuntu
+      how_much: 10
+      name_var: "AktaOtty"
+      when: '30 times a day'
+      how_fast: '80 kilometer i timen'
+  vars:
+    zis_iz_a_group_var: '113'
