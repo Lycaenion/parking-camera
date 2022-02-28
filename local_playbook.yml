@@ -6,3 +6,9 @@
     tasks:
       - name : "Test local action"
         command:  echo "Hello world"
+      - name: "Pull github repo to local machine"
+        git:
+          repo: https://github.com/Lycaenion/FlaskEnrollment.git
+          dest: /home/lam/Programming/testCloneAnsible/testFlaskClone
+          clone: yes
+          update: yes
