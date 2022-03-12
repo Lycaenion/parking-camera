@@ -53,8 +53,8 @@
     ```
     Then copy them to proper place:
     ```bash
-    cp /home/ubuntu/letsencrypt/archive/aktaotty.com/fullchain2.pem /etc/nginx/ssl/aktaotty.com.crt
-    cp /home/ubuntu/letsencrypt/archive/aktaotty.com/privkey2.pem /etc/nginx/ssl/aktaotty.com.key
+    sudo cp /home/ubuntu/letsencrypt/archive/aktaotty.com/fullchain2.pem /etc/nginx/ssl/aktaotty.com.crt
+    sudo cp /home/ubuntu/letsencrypt/archive/aktaotty.com/privkey2.pem /etc/nginx/ssl/aktaotty.com.key
     ```
     Then restart nginx:
     ```bash
