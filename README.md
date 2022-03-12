@@ -47,6 +47,19 @@
     ```bash
     sudo /home/ubuntu/e/bin/certbot certonly --standalone -n --agree-tos --email no-reply@aktaotty.com -d aktaotty.com --config-dir /home/ubuntu/letsencrypt --logs-dir /tmp/letsencrypt --work-dir /tmp/letsencrypt -v
     ```
+    Find correct ones:
+    ```bash
+    sudo ls -la /home/ubuntu/letsencrypt/live/aktaotty.com/
+    ```
+    Then copy them to proper place:
+    ```bash
+    cp /home/ubuntu/letsencrypt/archive/aktaotty.com/fullchain2.pem /etc/nginx/ssl/aktaotty.com.crt
+    cp /home/ubuntu/letsencrypt/archive/aktaotty.com/privkey2.pem /etc/nginx/ssl/aktaotty.com.key
+    ```
+    Then restart nginx:
+    ```bash
+    sudo systemctl restart nginx
+    ```
 
 -   Show current public IP, when on AWS EC2 instance:
     ```bash
